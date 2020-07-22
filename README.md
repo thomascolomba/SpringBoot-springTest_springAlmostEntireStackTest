@@ -1,5 +1,4 @@
-Run unit tests in the web mvc layer of a spring application without starting the entire server and executing the entire spring stack.<br/>
-Allows mocking the service layer beans.<br/>
+Run unit tests with almost the entire spring stack running.<br/>
 <br/>
 compile & execute :<br/>
 mvn spring-boot:run<br/>
@@ -17,9 +16,8 @@ public String greet() {<br/>
 --WebMockTest.java<br/>
 @Test<br/>
 public void greetingShouldReturnMessageFromService() throws Exception {<br/>
-&nbsp;&nbsp;<b>when(service.greet()).thenReturn("Hello, Mock");</b><br/>
 &nbsp;&nbsp;this.mockMvc.perform(get("/greeting"))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;.andDo(print())<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;.andExpect(status().isOk())<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;.andExpect(content().string(containsString("Hello, Mock")));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.andExpect(content().string(containsString("Hello, World")));<br/>
 <br/>
